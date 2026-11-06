@@ -1,0 +1,455 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="description" content="Discover local events, creative workshops, art exhibitions, and live music experiences with Gather.">
+
+    <title>Gather — Find Your Next Experience</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- Navigation -->
+    <header class="navbar">
+
+        <a href="#" class="logo">gather<span>.</span></a>
+
+        <nav>
+            <a href="#events">Discover</a>
+            <a href="#about">About</a>
+        </nav>
+
+        <div class="nav-actions">
+
+            <button id="themeToggle" class="theme-toggle">
+                Dark Mode
+            </button>
+
+            <a href="#events" class="nav-button">
+                Explore Events ↗
+            </a>
+
+        </div>
+
+    </header>
+
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-animations" aria-hidden="true">
+            <span class="floating-shape shape-one"></span>
+            <span class="floating-shape shape-two"></span>
+            <span class="floating-shape shape-three"></span>
+            <span class="floating-shape shape-four"></span>
+            <span class="floating-shape shape-five"></span>
+        </div>
+        <div class="hero-content">
+
+            <p class="eyebrow">
+                YOUR CITY. YOUR PEOPLE. YOUR MOMENTS.
+            </p>
+
+            <h1>
+                Life happens<br>
+                <span>when we gather.</span>
+            </h1>
+
+            <p class="hero-description">
+                Discover experiences worth stepping out for.
+                From intimate workshops to unforgettable nights,
+                find your next favourite moment here.
+            </p>
+
+            <!-- Dynamic Countdown -->
+            <div class="countdown-container">
+
+                <p class="countdown-label">
+                    NEXT EVENT STARTS IN
+                </p>
+
+                <div class="countdown" id="countdown">
+
+                    <div>
+                        <span id="countDays">00</span>
+                        <small>Days</small>
+                    </div>
+
+                    <div>
+                        <span id="countHours">00</span>
+                        <small>Hours</small>
+                    </div>
+
+                    <div>
+                        <span id="countMinutes">00</span>
+                        <small>Minutes</small>
+                    </div>
+
+                    <div>
+                        <span id="countSeconds">00</span>
+                        <small>Seconds</small>
+                    </div>
+
+                </div>
+
+            </div>
+
+            <a href="#events" class="primary-button">
+                Discover Events ↗
+            </a>
+
+        </div>
+
+
+        <!-- Hero Image -->
+        <div class="hero-image">
+
+            <img
+                src="https://images.unsplash.com/photo-1501386761578-eac5c94b800a?auto=format&fit=crop&w=1200&q=85"
+                alt="People enjoying a live music festival">
+
+        </div>
+
+
+        <!-- Hero Tag -->
+        <div class="hero-tag">
+
+            <span>✳</span>
+
+            Made for moments that matter.
+
+        </div>
+
+    </section>
+
+
+    <!-- Events Section -->
+    <section class="events-section" id="events">
+
+        <div class="section-heading">
+
+            <div>
+
+                <p class="eyebrow">
+                    WHAT'S HAPPENING
+                </p>
+
+                <h2>
+                    Find your next <span>experience.</span>
+                </h2>
+
+            </div>
+
+            <p class="section-description">
+                Good things happen when you show up.
+                Find something worth being there for.
+            </p>
+
+        </div>
+
+
+        <!-- Search and Category Filters -->
+        <div class="event-controls">
+
+            <div class="categories">
+
+                <button
+                    class="category active"
+                    data-category="all">
+
+                    All Events
+
+                </button>
+
+                <button
+                    class="category"
+                    data-category="music">
+
+                    Music
+
+                </button>
+
+                <button
+                    class="category"
+                    data-category="art">
+
+                    Art & Culture
+
+                </button>
+
+                <button
+                    class="category"
+                    data-category="workshop">
+
+                    Workshops
+
+                </button>
+
+            </div>
+
+
+            <input
+                type="search"
+                id="eventSearch"
+                placeholder="Search events..."
+                aria-label="Search events">
+
+        </div>
+
+
+        <!-- Event Cards Generated Through JavaScript -->
+        <div class="event-grid" id="eventGrid">
+
+            <!-- Event cards will be added dynamically -->
+
+        </div>
+
+    </section>
+
+
+    <!-- About Section -->
+    <section class="about-section" id="about">
+
+        <p class="eyebrow">
+            A LITTLE ABOUT US
+        </p>
+
+        <h2>
+            Less scrolling.<br>
+            <span>More living.</span>
+        </h2>
+
+        <p>
+            Gather brings people closer to the experiences
+            that make life interesting. Find your people,
+            discover something new, and make memories
+            worth keeping.
+        </p>
+
+    </section>
+
+
+    <!-- Footer -->
+    <footer class="footer">
+
+        <a href="#" class="logo">
+            gather<span>.</span>
+        </a>
+
+        <p>
+            Made for moments that matter.
+        </p>
+
+        <p>
+            © 2026 Gather. All rights reserved.
+        </p>
+
+    </footer>
+
+
+    <!-- Event Details and Registration Modal -->
+    <div class="modal-overlay" id="eventModal">
+
+        <div class="modal">
+
+            <button
+                class="modal-close"
+                id="closeModal"
+                aria-label="Close event details">
+
+                &times;
+
+            </button>
+
+
+            <!-- Event Information -->
+            <div class="modal-header">
+
+                <p class="eyebrow">
+                    YOUR NEXT EXPERIENCE
+                </p>
+
+                <h2 id="modalEventName">
+                    Event Name
+                </h2>
+
+                <p id="modalEventDescription">
+                    Event description
+                </p>
+
+            </div>
+
+
+            <!-- Event Details -->
+            <div class="modal-event-info">
+
+                <div>
+
+                    <span class="info-label">
+                        DATE
+                    </span>
+
+                    <p id="modalEventDate">
+                        Date
+                    </p>
+
+                </div>
+
+                <div>
+
+                    <span class="info-label">
+                        VENUE
+                    </span>
+
+                    <p id="modalEventVenue">
+                        Venue
+                    </p>
+
+                </div>
+
+                <div>
+
+                    <span class="info-label">
+                        TICKET PRICE
+                    </span>
+
+                    <p id="modalEventPrice">
+                        Price
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <!-- Registration Form -->
+            <div class="registration-section">
+
+                <h3>
+                    Reserve your spot
+                </h3>
+
+                <p class="form-description">
+                    Enter your details to register for this event.
+                </p>
+
+
+                <form id="registrationForm">
+
+                    <input
+                        type="hidden"
+                        id="selectedEvent">
+
+
+                    <!-- Participant Name -->
+                    <div class="form-group">
+
+                        <label for="participantName">
+                            Full Name
+                        </label>
+
+                        <input
+                            type="text"
+                            id="participantName"
+                            placeholder="Enter your full name"
+                            required>
+
+                        <small
+                            class="error-message"
+                            id="nameError">
+                        </small>
+
+                    </div>
+
+
+                    <!-- Participant Email -->
+                    <div class="form-group">
+
+                        <label for="participantEmail">
+                            Email Address
+                        </label>
+
+                        <input
+                            type="email"
+                            id="participantEmail"
+                            placeholder="you@example.com"
+                            required>
+
+                        <small
+                            class="error-message"
+                            id="emailError">
+                        </small>
+
+                    </div>
+
+
+                    <!-- Participant Phone -->
+                    <div class="form-group">
+
+                        <label for="participantPhone">
+                            Phone Number
+                        </label>
+
+                        <input
+                            type="tel"
+                            id="participantPhone"
+                            placeholder="10-digit phone number"
+                            required>
+
+                        <small
+                            class="error-message"
+                            id="phoneError">
+                        </small>
+
+                    </div>
+
+
+                    <!-- Submit Button -->
+                    <button
+                        type="submit"
+                        class="register-button">
+
+                        Confirm Registration ↗
+
+                    </button>
+
+                </form>
+
+
+                <!-- Registration Success Message -->
+                <div
+                    class="registration-success"
+                    id="registrationSuccess">
+
+                    <div class="success-icon">
+                        ✓
+                    </div>
+
+                    <h3>
+                        You're on the list!
+                    </h3>
+
+                    <p>
+                        Your registration has been completed successfully.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- JavaScript -->
+    <script src="script.js"></script>
+
+</body>
+
+</html>
